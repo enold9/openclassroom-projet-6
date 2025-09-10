@@ -17,6 +17,7 @@ function BookItem({ book, size }) {
       title = <h2>{book.title}</h2>;
       break;
   }
+  console.log(book);
   return (
     <Link to={`/livre/${book.id}`} className={styles.BookItem}>
       <article>
