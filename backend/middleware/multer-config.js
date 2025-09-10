@@ -1,5 +1,7 @@
 const multer = require('multer')
 
+console.log('multer middleware');
+
 const MIME_TYPES = {
     'image/jpg': 'jpg',
     'image/jpeg': 'jpg',
