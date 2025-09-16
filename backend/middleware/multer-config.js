@@ -19,5 +19,3 @@ const storage = multer.diskStorage({
 })
 
 module.exports = multer({storage}).single('image')
-
-//format webp et compression sharp
