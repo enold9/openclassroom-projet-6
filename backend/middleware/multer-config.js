@@ -3,7 +3,8 @@ const multer = require('multer')
 const MIME_TYPES = {
     'image/jpg': 'jpg',
     'image/jpeg': 'jpg',
-    'image/png': 'png'
+    'image/png': 'png',
+    'image/webp': 'webp'
 }
 
 const storage = multer.diskStorage({
@@ -18,3 +19,5 @@ const storage = multer.diskStorage({
 })
 
 module.exports = multer({storage}).single('image')
+
+//format webp et compression sharp

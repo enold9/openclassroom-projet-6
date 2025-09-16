@@ -1,5 +1,4 @@
 const Book = require('../models/Books')
-const Rating = require('../models/Ratings')
 const fs = require('fs')
 
 exports.createBook = (req, res, next)=>{
@@ -28,7 +27,7 @@ exports.modifyBook = (req, res, next) => {
         res.status(401).JSON({message: 'Not authorized'})
       }
       else{
-        Book.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
+        Book.updateOne({ _id: req.params.id }, { ...bookObject, _id: req.params.id })
         .then(() => res.status(200).json({ message: 'Objet modifié !'}))
         .catch(error => res.status(400).json({ error }))
       }
@@ -65,18 +64,6 @@ exports.rateBook = async (req, res, next) => {
   } catch (error) {
     res.status(400).json({ error });
   }
-  // await Book.findOne({ _id: req.params.id})
-  //      .then(book => {
-  //       const ratings = book.ratings;
-  //       const averageRating = ratings.length
-  //         ? ratings.reduce((acc, curr) => acc + curr.grade, 0) / ratings.length
-  //         : 0;
-  //       book.averageRating = averageRating;                                            pourquoi ça veut pas :(
-  //       book.save()
-  //         .then(() => res.status(200).json({ message: 'Note ajoutée !' }))
-  //         .catch(error => res.status(400).json({ error }))
-  //     })
-  //      .catch(res.status(404).json({ error }))
 }
 
 exports.deleteBook = (req, res, next) => {
